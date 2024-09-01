@@ -12,7 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-from decouple import config
+# from decouple import config
+
+# print("Database Name:", config('product_management_db'))
+# print("Database User:", config('product_manager_user'))
+# print("Database Password:", config('product_manager_password'))
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -76,18 +81,21 @@ WSGI_APPLICATION = 'product_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {   # // NOTE: replacing the default sqlite database config with my postgres config
+# // NOTE: replacing the default sqlite database config with my postgres config
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('your_db_name'),
-        'USER': config('your_db_user'),
-        'PASSWORD': config('your_db_password'),
+        'NAME': 'product_management_db',
+        'USER': 'product_manager_user',
+        'PASSWORD': 'zD13v26ESzLhadH',
         'HOST': 'localhost',
         'PORT': '5432',
-    }   # NOTE: come up with a good name for the database
+    }   
 }
-
-
+# NOTE: come up with a good name for the database zD13v26ESzLhadH
+        # 'NAME': config('product_management_db'),
+        # 'USER': config('product_manager_user'),
+        # 'PASSWORD': config('zD13v26ESzLhadH'),
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
