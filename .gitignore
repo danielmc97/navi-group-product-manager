@@ -1,0 +1,24 @@
+# Python
+*.pyc
+__pycache__/
+
+# Virtual Environment
+venv/
+ENV/
+.env
+
+# Django 
+# wont be using sqlite, project is in postgresql - maybe ignore that here?
+# todo
+db.sqlite3      
+*.log
+staticfiles/
+media/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
