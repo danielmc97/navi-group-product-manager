@@ -18,6 +18,10 @@ from pathlib import Path
 # print("Database User:", config('product_manager_user'))
 # print("Database Password:", config('product_manager_password'))
 
+#Login
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/products/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
