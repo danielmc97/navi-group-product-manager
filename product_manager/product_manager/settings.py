@@ -21,6 +21,7 @@ from pathlib import Path
 #Login
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/products/'
+# LOGIN_REDIRECT_URL = reverse('products:product_list') # test debugging
 LOGOUT_REDIRECT_URL = '/'
 
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ ROOT_URLCONF = 'product_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
