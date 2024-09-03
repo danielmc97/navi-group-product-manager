@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import Supplier, Product
+from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
+from .models import Supplier, Product, User
 # , ProductImage
+
+# 
+# class UserAdmin(DjangoUserAdmin):
+#     model = User
+# admin.site.register(User, UserAdmin)
 
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):

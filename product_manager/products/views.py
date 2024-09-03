@@ -5,15 +5,22 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from .models import Product
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # from django.urls import reverse
-# from django.urls import reverse_lazy 
+# from django.urls import reverse_lazy
 
-#Login
+# Here's the login functionality as per requested in the task
 
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     redirect_authenticated_user = True
 
+    def get_success_url(self):
+        user = self.request.user
+        if user.groups.filter(name='Buyer').exists():
+            return '/products/buyer/products/'
+        else:
+            return '/products/'  # Redirect to a default view if not a Buyer
 # def login_view(request):
 #     if request.method == 'POST':
 #         form = AuthenticationForm(data=request.POST)
@@ -45,10 +52,15 @@ class SupplierProductListView(ListView):
             return Product.objects.filter(supplier=user.supplier)
         return Product.objects.none()
 
-class BuyerProductListView(ListView):
+class BuyerProductListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Product
     template_name = 'products/buyer_product_list.html'
     context_object_name = 'products'
 
     def get_queryset(self):
         return Product.objects.filter(stock_status='in_stock')
+
+# commented out the group check for testing
+    # def test_func(self):
+    #     return self.request.user.groups.filter(name='Buyer').exists()
+    

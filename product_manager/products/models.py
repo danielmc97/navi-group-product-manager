@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.contrib.auth.models import Group
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
+# from .models import User
 
 class Supplier(models.Model):
     name = models.CharField(max_length=100)
@@ -53,3 +57,12 @@ class User(AbstractUser):
         help_text='Specific permissions for this user.',
         related_query_name='user',
     )
+
+
+# Buyer group isn't saving through django admin config
+
+# @receiver(post_save, sender=User)
+# def add_user_to_buyer_group(sender, instance, created, **kwargs):
+#     if created:
+#         buyer_group, created = Group.objects.get_or_create(name='Buyer')
+#         instance.groups.add(buyer_group)
