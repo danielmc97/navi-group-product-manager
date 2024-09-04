@@ -25,7 +25,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock_status = models.CharField(max_length=20, choices=STOCK_STATUS_CHOICES)
     main_image = models.ImageField(upload_to='product_images/', blank=True, null=True)
-    # add extra images like a normal store? 
 
     class Meta:
         constraints = [
@@ -42,7 +41,7 @@ class Product(models.Model):
     
 
 class User(AbstractUser):
-    # Adding related_name to avoid clashes
+
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='custom_user_set',

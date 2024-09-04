@@ -14,9 +14,9 @@ import os
 from pathlib import Path
 # from decouple import config
 
-# print("Database Name:", config('product_management_db'))
-# print("Database User:", config('product_manager_user'))
-# print("Database Password:", config('product_manager_password'))
+# print("Database Name:", config(''))
+# print("Database User:", config(''))
+# print("Database Password:", config(''))
 
 #Login
 LOGIN_URL = '/login/'
@@ -101,10 +101,6 @@ DATABASES = {
         'PORT': '5432',
     }   
 }
-# NOTE: come up with a good name for the database zD13v26ESzLhadH
-        # 'NAME': config('product_management_db'),
-        # 'USER': config('product_manager_user'),
-        # 'PASSWORD': config('zD13v26ESzLhadH'),
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 

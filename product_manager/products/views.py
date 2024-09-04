@@ -6,11 +6,8 @@ from django.views.generic import ListView
 from .models import Product
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-# from django.urls import reverse
-# from django.urls import reverse_lazy
 
-# Here's the login functionality as per requested in the task
-
+# login functionality
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     redirect_authenticated_user = True
@@ -73,7 +70,6 @@ class BuyerProductListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     def get_queryset(self):
         return Product.objects.filter(stock_status='in_stock')
 
-# commented out the group check for testing
-    # def test_func(self):
-    #     return self.request.user.groups.filter(name='Buyer').exists()
+    def test_func(self):
+        return self.request.user.groups.filter(name='Buyer').exists()
     

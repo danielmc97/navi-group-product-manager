@@ -1,12 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
-from .models import Supplier, Product, User
-# , ProductImage
-
-# 
-# class UserAdmin(DjangoUserAdmin):
-#     model = User
-# admin.site.register(User, UserAdmin)
+from .models import Supplier, Product, User# , ProductImage
 
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
@@ -21,3 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
 # @admin.register(ProductImage)
 # class ProductImageAdmin(admin.ModelAdmin):
 #     list_display = ('product', 'is_main')
+
+# class UserAdmin(DjangoUserAdmin):
+#     model = User
+# admin.site.register(User, UserAdmin)
