@@ -5,15 +5,16 @@ __pycache__/
 # Virtual Environment
 venv/
 ENV/
-.env
+.env         
+# need this in my local environment. That's an hour I'll never get back :_)
 
 # Django 
 # wont be using sqlite, project is in postgresql - maybe ignore that here?
 # todo
 db.sqlite3      
 *.log
-staticfiles/
 media/
+# staticfiles/
 
 # OS-specific files
 .DS_Store
