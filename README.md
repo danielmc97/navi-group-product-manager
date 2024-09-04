@@ -27,5 +27,6 @@ Daniel McCarthy - [danielmc97@gmail.com]
 Project Link: [https://github.com/danielmc97/navi-group-product-manager]
 
 ## Acknowledgements
-
 - Django documentation [https://docs.djangoproject.com/en/5.1/]
+
+- I tracked the project using Trello, [https://trello.com/invite/b/66d06c14dc0fb1323cf1a7ed/ATTI99f23d7a515ebe632d6ca2c401569ce97258B208/agile-board-navi-group-technical-project]
