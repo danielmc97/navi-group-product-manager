@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier's Products</title>
+</head>
+<body>
+    <h1>My Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Price</th>
+                <th>Stock Status</th>
+                <th>Has Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.get_stock_status_display }}</td>
+                <td>{% if product.main_image %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Cheaper Analogues</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in cheaper_analogues %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

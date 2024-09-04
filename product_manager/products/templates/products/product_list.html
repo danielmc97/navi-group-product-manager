@@ -1,0 +1,45 @@
+<!-- Temporary file from previous project -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <h1>Product List</h1>
+
+    <!-- Add a link to the home page or other relevant pages -->
+    <a href="{% url 'landing_page' %}">Back to Home</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Product Code</th>
+                <th>Price</th>
+                <th>Supplier</th>
+                <th>Stock Status</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.product_code }}</td>
+                <td>${{ product.price }}</td>
+                <td>{{ product.supplier }}</td>
+                <td>{{ product.stock_status }}</td>
+                <td><a href="{% url 'product_detail' product.id %}">View Details</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No products available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

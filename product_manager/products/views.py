@@ -41,7 +41,7 @@ class ProductListView(ListView):
     def get_queryset(self):
         return Product.objects.filter(stock_status='in_stock')
 
-class SupplierProductListView(ListView):
+class SupplierProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'products/supplier_product_list.html'
     context_object_name = 'products'
@@ -52,6 +52,19 @@ class SupplierProductListView(ListView):
             return Product.objects.filter(supplier=user.supplier)
         return Product.objects.none()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        products = context['products']
+        
+        if products.exists():
+            min_price = products.order_by('price').first().price
+            cheaper_analogues = Product.objects.filter(price__lt=min_price)
+        else:
+            cheaper_analogues = Product.objects.none()
+        
+        context['cheaper_analogues'] = cheaper_analogues
+        return context
+    
 class BuyerProductListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Product
     template_name = 'products/buyer_product_list.html'
