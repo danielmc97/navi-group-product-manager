@@ -1,16 +1,14 @@
-<!-- Temporary file from previous project -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Product List</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Link to your CSS file -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <h1>Product List</h1>
 
-    <!-- Add a link to the home page or other relevant pages -->
     <a href="{% url 'landing_page' %}">Back to Home</a>
 
     <table>
